@@ -2,10 +2,7 @@
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo">
-                <i class='bx bx-receipt fs-4'></i>
-            </span>
-            <span class="app-brand-text menu-text fw-bolder ms-2 fs-4">
-                {{ config('app.name', 'E-Billing') }}
+                <img src="{{ asset('img/ebilling.png') }}" alt="Logo" style="max-height: 38px; width: auto;">
             </span>
         </a>
 

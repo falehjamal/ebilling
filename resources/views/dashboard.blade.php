@@ -15,41 +15,17 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,.15);
         }
-        .summary-card .card-body {
-            padding: 1.25rem;
-            position: relative;
-        }
-        .summary-card .card-icon {
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            font-size: 2rem;
-            opacity: .25;
-        }
-        .summary-card .card-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .summary-card .card-label {
-            font-size: .8rem;
-            opacity: .85;
-            margin-bottom: 4px;
-        }
+        .summary-card .card-body { padding: 1.25rem; position: relative; }
+        .summary-card .card-icon { position: absolute; top: 12px; right: 14px; font-size: 2rem; opacity: .25; }
+        .summary-card .card-value { font-size: 1.75rem; font-weight: 700; line-height: 1.2; }
+        .summary-card .card-label { font-size: .8rem; opacity: .85; margin-bottom: 4px; }
         .summary-card .card-footer-link {
-            display: block;
-            text-align: center;
-            padding: 8px;
-            color: rgba(255,255,255,.8);
-            font-size: .8rem;
-            background: rgba(0,0,0,.1);
-            text-decoration: none;
-            transition: background .15s;
+            display: block; text-align: center; padding: 8px;
+            color: rgba(255,255,255,.8); font-size: .8rem;
+            background: rgba(0,0,0,.1); text-decoration: none; transition: background .15s;
         }
-        .summary-card .card-footer-link:hover {
-            background: rgba(0,0,0,.2);
-            color: #fff;
-        }
+        .summary-card .card-footer-link:hover { background: rgba(0,0,0,.2); color: #fff; }
+
         .bg-card-blue    { background: linear-gradient(135deg, #28A745, #1e7e34); }
         .bg-card-green   { background: linear-gradient(135deg, #28a745, #1e7e34); }
         .bg-card-orange  { background: linear-gradient(135deg, #f57c00, #e65100); }
@@ -62,17 +38,22 @@
         .status-list dt { font-size: .85rem; opacity: .9; }
         .status-list dd { font-size: 1.1rem; font-weight: 600; margin-bottom: .35rem; }
 
-        .birthday-card .avatar-circle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+        .new-customer-card .avatar-circle {
+            width: 48px; height: 48px; border-radius: 50%;
             background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #28A745;
-            font-size: 1.25rem;
+            display: flex; align-items: center; justify-content: center;
+            color: #28A745; font-size: 1.25rem;
         }
+
+        .money-wrap { display: inline-flex; align-items: center; gap: 4px; }
+        .money-wrap .money-toggle {
+            cursor: pointer; opacity: .6; transition: opacity .15s;
+            font-size: .75em; vertical-align: middle; border: none;
+            background: none; padding: 0; color: inherit; line-height: 1;
+        }
+        .money-wrap .money-toggle:hover { opacity: 1; }
+        .summary-card .money-wrap .money-toggle { color: rgba(255,255,255,.7); }
+        .summary-card .money-wrap .money-toggle:hover { color: #fff; }
     </style>
 @endpush
 
@@ -94,7 +75,7 @@
             <div class="card summary-card bg-card-green">
                 <div class="card-body">
                     <i class="bx bx-check-shield card-icon"></i>
-                    <div class="card-value">782 <small style="font-size: .55em; opacity:.8">| Rp 523jt</small></div>
+                    <div class="card-value">782 <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 523jt"></i></span></small></div>
                     <div class="card-label">Pelanggan Sudah Lunas</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -104,7 +85,7 @@
             <div class="card summary-card bg-card-orange">
                 <div class="card-body">
                     <i class="bx bx-error card-icon"></i>
-                    <div class="card-value">1,028 <small style="font-size: .55em; opacity:.8">| Rp 412jt</small></div>
+                    <div class="card-value">1,028 <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 412jt"></i></span></small></div>
                     <div class="card-label">Pelanggan Belum Lunas</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -168,25 +149,23 @@
 
     {{-- ========== ROW 3 — Keuangan, Status, Tiket Aktivasi, WADM ========== --}}
     <div class="row">
-        {{-- Keuangan --}}
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card summary-card bg-card-blue">
                 <div class="card-body">
                     <i class="bx bx-wallet card-icon"></i>
                     <dl class="status-list mb-0">
                         <dt>Pemasukan Bulan Ini | Hari Ini</dt>
-                        <dd>Rp 85jt | Rp 4.2jt</dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 85jt"></i></span> | <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 4.2jt"></i></span></dd>
                         <dt>Pengeluaran Bulan Ini</dt>
-                        <dd>Rp 12jt</dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 12jt"></i></span></dd>
                         <dt>Balance Bulan Ini</dt>
-                        <dd>Rp 73jt</dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 73jt"></i></span></dd>
                     </dl>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
             </div>
         </div>
 
-        {{-- Status Langganan --}}
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card summary-card bg-card-green">
                 <div class="card-body">
@@ -204,7 +183,6 @@
             </div>
         </div>
 
-        {{-- Ticket Permintaan Aktivasi --}}
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card summary-card bg-card-yellow" style="color: #333;">
                 <div class="card-body">
@@ -216,7 +194,6 @@
             </div>
         </div>
 
-        {{-- Status WADM --}}
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card summary-card bg-card-red">
                 <div class="card-body">
@@ -229,15 +206,14 @@
         </div>
     </div>
 
-    {{-- ========== ROW 4 — Ulang Tahun & Domain Expired ========== --}}
+    {{-- ========== ROW 4 — Pelanggan Baru & Domain Expired ========== --}}
     <div class="row">
-        {{-- Ulang Tahun Pelanggan --}}
         <div class="col-xl-8 col-md-7 mb-4">
-            <div class="card birthday-card">
+            <div class="card new-customer-card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0">
-                        <i class="bx bx-cake text-primary me-1"></i> Ulang Tahun Pelanggan
-                        <span class="badge bg-primary ms-1">Februari 2026 | Rp 4.000.000</span>
+                        <i class="bx bx-user-plus text-primary me-1"></i> Pelanggan Baru
+                        <span class="badge bg-primary ms-1">Februari 2026</span>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -310,7 +286,6 @@
             </div>
         </div>
 
-        {{-- Data Domain Akan Expired --}}
         <div class="col-xl-4 col-md-5 mb-4">
             <div class="card summary-card bg-card-red">
                 <div class="card-body text-center py-4">
@@ -323,7 +298,7 @@
         </div>
     </div>
 
-    {{-- ========== KONTEN SEBELUMNYA ========== --}}
+    {{-- ========== ROW 5 — Welcome + Laporan ========== --}}
     <div class="row">
         <div class="col-lg-8 mb-4 order-0">
             <div class="card">
@@ -349,33 +324,29 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 order-1">
-            <div class="row">
-                <div class="col-6 col-md-12 col-lg-6 mb-4">
-                    <div class="card"
-                        style="background: linear-gradient(135deg, #28a745, #20c997); border: none; border-radius: 12px;">
-                        <div class="card-body">
-                            <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Total Tagihan</h6>
-                            <h3 class="text-white mb-1">Rp 125jt</h3>
-                            <small class="text-white opacity-75 fw-semibold"><i class="bx bx-up-arrow-alt"></i> +12%
-                                bulan ini</small>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                        <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                            <div class="card-title">
+                                <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
+                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
+                            </div>
+                            <div class="mt-sm-auto">
+                                <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
+                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-12 col-lg-6 mb-4">
-                    <div class="card"
-                        style="background: linear-gradient(135deg, #20c997, #218838); border: none; border-radius: 12px;">
-                        <div class="card-body">
-                            <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Sudah Dibayar</h6>
-                            <h3 class="text-white text-nowrap mb-1">Rp 98jt</h3>
-                            <small class="text-white opacity-75 fw-semibold"><i class="bx bx-up-arrow-alt"></i> 78.4%
-                                terbayar</small>
-                        </div>
+                        <div id="profileReportChart"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+    {{-- ========== ROW 6 — Pendapatan Bulanan ========== --}}
+    <div class="row">
+        <div class="col-12 col-lg-8 mb-4">
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="col-md-8">
@@ -387,9 +358,7 @@
                             <div class="text-center">
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown">
-                                        2026
-                                    </button>
+                                        data-bs-toggle="dropdown">2026</button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="javascript:void(0);">2025</a>
                                         <a class="dropdown-item" href="javascript:void(0);">2024</a>
@@ -402,12 +371,11 @@
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                             <div class="d-flex">
                                 <div class="me-2">
-                                    <span class="badge bg-label-primary p-2"><i
-                                            class="bx bx-dollar text-primary"></i></span>
+                                    <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <small>2026</small>
-                                    <h6 class="mb-0">Rp 125jt</h6>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 125jt"></i></span></h6>
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -416,7 +384,7 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <small>2025</small>
-                                    <h6 class="mb-0">Rp 105jt</h6>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 105jt"></i></span></h6>
                                 </div>
                             </div>
                         </div>
@@ -424,56 +392,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-            <div class="row">
-                <div class="col-6 mb-4">
-                    <div class="card"
-                        style="background: linear-gradient(135deg, #ffc107, #fd7e14); border: none; border-radius: 12px;">
-                        <div class="card-body">
-                            <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Belum Bayar</h6>
-                            <h3 class="text-white text-nowrap mb-1">Rp 27jt</h3>
-                            <small class="text-white opacity-75 fw-semibold"><i class="bx bx-down-arrow-alt"></i>
-                                -14.82%</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 mb-4">
-                    <div class="card"
-                        style="background: linear-gradient(135deg, #28A745, #1e7e34); border: none; border-radius: 12px;">
-                        <div class="card-body">
-                            <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Pelanggan</h6>
-                            <h3 class="text-white mb-1">1,250</h3>
-                            <small class="text-white opacity-75 fw-semibold"><i class="bx bx-up-arrow-alt"></i>
-                                +28.14%</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                                    <div class="card-title">
-                                        <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
-                                        <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
-                                    </div>
-                                    <div class="mt-sm-auto">
-                                        <small class="text-success text-nowrap fw-semibold"><i
-                                                class="bx bx-chevron-up"></i> 68.2%</small>
-                                        <h3 class="mb-0">Rp 84jt</h3>
-                                    </div>
-                                </div>
-                                <div id="profileReportChart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+        {{-- Statistik Tagihan --}}
+        <div class="col-12 col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
@@ -481,8 +402,7 @@
                         <small class="text-muted">1,250 Total Tagihan</small>
                     </div>
                     <div class="dropdown">
-                        <button class="btn p-0" type="button" data-bs-toggle="dropdown"><i
-                                class="bx bx-dots-vertical-rounded"></i></button>
+                        <button class="btn p-0" type="button" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
                         </div>
@@ -499,99 +419,118 @@
                     <ul class="p-0 m-0">
                         <li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-primary"><i
-                                        class="bx bx-check-circle"></i></span>
+                                <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-check-circle"></i></span>
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
                                     <h6 class="mb-0">Tagihan Lunas</h6>
                                     <small class="text-muted">Pembayaran selesai</small>
                                 </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">856</small>
-                                </div>
+                                <div class="user-progress"><small class="fw-semibold">856</small></div>
                             </div>
                         </li>
                         <li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-warning"><i
-                                        class="bx bx-time-five"></i></span>
+                                <span class="avatar-initial rounded bg-label-warning"><i class="bx bx-time-five"></i></span>
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
                                     <h6 class="mb-0">Belum Dibayar</h6>
                                     <small class="text-muted">Menunggu pembayaran</small>
                                 </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">312</small>
-                                </div>
+                                <div class="user-progress"><small class="fw-semibold">312</small></div>
                             </div>
                         </li>
                         <li class="d-flex">
                             <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-danger"><i
-                                        class="bx bx-x-circle"></i></span>
+                                <span class="avatar-initial rounded bg-label-danger"><i class="bx bx-x-circle"></i></span>
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
                                     <h6 class="mb-0">Jatuh Tempo</h6>
                                     <small class="text-muted">Melewati batas waktu</small>
                                 </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">82</small>
-                                </div>
+                                <div class="user-progress"><small class="fw-semibold">82</small></div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-6 col-lg-4 order-1 mb-4">
+    {{-- ========== ROW 7 — Pemasukan/Pengeluaran (Tab) + Transaksi Terakhir ========== --}}
+    <div class="row">
+        <div class="col-md-6 col-lg-8 mb-4">
             <div class="card h-100">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center justify-content-between">
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item">
-                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                                data-bs-target="#income-tab">
-                                Pemasukan
+                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#tab-pemasukan">
+                                <i class="bx bx-trending-up me-1"></i> Pemasukan
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="nav-link" role="tab">Pengeluaran</button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="nav-link" role="tab">Laba</button>
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#tab-pengeluaran">
+                                <i class="bx bx-trending-down me-1"></i> Pengeluaran
+                            </button>
                         </li>
                     </ul>
                 </div>
-                <div class="card-body px-0">
-                    <div class="tab-content p-0">
-                        <div class="tab-pane fade show active" id="income-tab" role="tabpanel">
-                            <div class="d-flex p-4 pt-3">
+                <div class="card-body">
+                    <div class="tab-content">
+                        {{-- Tab Pemasukan --}}
+                        <div class="tab-pane fade show active" id="tab-pemasukan" role="tabpanel">
+                            <div class="d-flex align-items-center mb-3">
                                 <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{ asset('template/assets/img/icons/unicons/wallet.png') }}"
-                                        alt="wallet" />
+                                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-trending-up"></i></span>
                                 </div>
                                 <div>
-                                    <small class="text-muted d-block">Total Saldo</small>
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="mb-0 me-1">Rp 45.9jt</h6>
-                                        <small class="text-success fw-semibold">
-                                            <i class="bx bx-chevron-up"></i>
-                                            42.9%
-                                        </small>
-                                    </div>
+                                    <small class="text-muted d-block">Total Pemasukan Bulan Ini</small>
+                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 85jt"></i></span></h4>
                                 </div>
                             </div>
-                            <div id="incomeChart"></div>
-                            <div class="d-flex justify-content-center pt-4 gap-2">
-                                <div class="flex-shrink-0">
-                                    <div id="expensesOfWeek"></div>
+                            <div id="pemasukanChart"></div>
+                            <div class="row mt-3 g-3">
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Hari Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 4.2jt"></i></span></h6>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Minggu Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 21jt"></i></span></h6>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Bulan Lalu</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 78jt"></i></span></h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Tab Pengeluaran --}}
+                        <div class="tab-pane fade" id="tab-pengeluaran" role="tabpanel">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <span class="avatar-initial rounded bg-label-danger"><i class="bx bx-trending-down"></i></span>
                                 </div>
                                 <div>
-                                    <p class="mb-n1 mt-1">Pengeluaran Minggu Ini</p>
-                                    <small class="text-muted">Rp 3.9jt lebih rendah dari minggu lalu</small>
+                                    <small class="text-muted d-block">Total Pengeluaran Bulan Ini</small>
+                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 12jt"></i></span></h4>
+                                </div>
+                            </div>
+                            <div id="pengeluaranChart"></div>
+                            <div class="row mt-3 g-3">
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Hari Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 850rb"></i></span></h6>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Minggu Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 3.2jt"></i></span></h6>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <small class="text-muted d-block">Bulan Lalu</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 9.5jt"></i></span></h6>
                                 </div>
                             </div>
                         </div>
@@ -600,13 +539,13 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 order-2 mb-4">
+        {{-- Transaksi Terakhir --}}
+        <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title m-0 me-2">Transaksi Terakhir</h5>
                     <div class="dropdown">
-                        <button class="btn p-0" type="button" data-bs-toggle="dropdown"><i
-                                class="bx bx-dots-vertical-rounded"></i></button>
+                        <button class="btn p-0" type="button" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="javascript:void(0);">28 Hari Terakhir</a>
                             <a class="dropdown-item" href="javascript:void(0);">Bulan Lalu</a>
@@ -618,8 +557,7 @@
                     <ul class="p-0 m-0">
                         <li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/paypal.png') }}" alt="User"
-                                    class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
@@ -627,14 +565,13 @@
                                     <h6 class="mb-0">PT. Maju Jaya</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-success">+Rp 8.2jt</h6>
+                                    <h6 class="mb-0 text-success"><span class="money-wrap"><span class="money-text">+Rp ***</span><i class="bx bx-hide money-toggle" data-real="+Rp 8.2jt"></i></span></h6>
                                 </div>
                             </div>
                         </li>
                         <li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/wallet.png') }}" alt="User"
-                                    class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
@@ -642,14 +579,13 @@
                                     <h6 class="mb-0">CV. Berkah Abadi</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-success">+Rp 5.5jt</h6>
+                                    <h6 class="mb-0 text-success"><span class="money-wrap"><span class="money-text">+Rp ***</span><i class="bx bx-hide money-toggle" data-real="+Rp 5.5jt"></i></span></h6>
                                 </div>
                             </div>
                         </li>
                         <li class="d-flex">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/cc-warning.png') }}" alt="User"
-                                    class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/cc-warning.png') }}" alt="User" class="rounded" />
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
@@ -657,7 +593,7 @@
                                     <h6 class="mb-0">Toko Sejahtera</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-danger">-Rp 1.2jt</h6>
+                                    <h6 class="mb-0 text-danger"><span class="money-wrap"><span class="money-text">-Rp ***</span><i class="bx bx-hide money-toggle" data-real="-Rp 1.2jt"></i></span></h6>
                                 </div>
                             </div>
                         </li>
@@ -667,3 +603,76 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    document.querySelectorAll('.money-toggle').forEach(function (icon) {
+        icon.addEventListener('click', function () {
+            var wrap = this.closest('.money-wrap');
+            var text = wrap.querySelector('.money-text');
+            var real = this.dataset.real;
+            var hidden = text.dataset.hidden || text.textContent;
+
+            if (!text.dataset.hidden) {
+                text.dataset.hidden = text.textContent;
+            }
+
+            if (text.textContent === hidden || text.textContent.indexOf('***') !== -1) {
+                text.textContent = real;
+                this.classList.remove('bx-hide');
+                this.classList.add('bx-show');
+            } else {
+                text.textContent = hidden;
+                this.classList.remove('bx-show');
+                this.classList.add('bx-hide');
+            }
+        });
+    });
+
+    // Pemasukan Chart
+    const pemasukanEl = document.querySelector('#pemasukanChart');
+    if (pemasukanEl) {
+        new ApexCharts(pemasukanEl, {
+            series: [{ name: 'Pemasukan', data: [31, 40, 28, 51, 42, 65, 55, 48, 38, 52, 60, 45] }],
+            chart: { height: 220, type: 'area', toolbar: { show: false }, parentHeightOffset: 0 },
+            colors: [config.colors.primary],
+            dataLabels: { enabled: false },
+            stroke: { width: 2, curve: 'smooth' },
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 0.6, opacityFrom: 0.5, opacityTo: 0.1, stops: [0, 95, 100] }
+            },
+            grid: { borderColor: config.colors.borderColor, strokeDashArray: 3, padding: { top: -15, bottom: -5, left: 0, right: 8 } },
+            xaxis: {
+                categories: ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'],
+                axisBorder: { show: false }, axisTicks: { show: false },
+                labels: { style: { fontSize: '12px', colors: config.colors.axisColor } }
+            },
+            yaxis: { labels: { show: false } },
+            tooltip: { y: { formatter: function(v) { return 'Rp ' + v + 'jt'; } } }
+        }).render();
+    }
+
+    // Pengeluaran Chart
+    const pengeluaranEl = document.querySelector('#pengeluaranChart');
+    if (pengeluaranEl) {
+        new ApexCharts(pengeluaranEl, {
+            series: [{ name: 'Pengeluaran', data: [15, 22, 18, 30, 25, 20, 28, 17, 24, 19, 23, 16] }],
+            chart: { height: 220, type: 'bar', toolbar: { show: false }, parentHeightOffset: 0 },
+            colors: [config.colors.danger],
+            plotOptions: { bar: { borderRadius: 6, columnWidth: '45%' } },
+            dataLabels: { enabled: false },
+            grid: { borderColor: config.colors.borderColor, strokeDashArray: 3, padding: { top: -15, bottom: -5, left: 0, right: 8 } },
+            xaxis: {
+                categories: ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'],
+                axisBorder: { show: false }, axisTicks: { show: false },
+                labels: { style: { fontSize: '12px', colors: config.colors.axisColor } }
+            },
+            yaxis: { labels: { show: false } },
+            tooltip: { y: { formatter: function(v) { return 'Rp ' + v + 'jt'; } } }
+        }).render();
+    }
+})();
+</script>
+@endpush
