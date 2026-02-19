@@ -12,7 +12,7 @@
   --bs-card-bg: #2b2c40;
   --bs-border-color: #434968;
   --bs-heading-color: #cfd3ec;
-  --bs-link-color: #696cff;
+  --bs-link-color: #28A745;
   --bs-secondary-bg: #232333;
   --sneat-dark-bg: #232333;
   --sneat-card-bg: #2b2c40;
@@ -101,7 +101,7 @@
 }
 
 .dark-style .menu-item.active > .menu-link {
-  color: #696cff !important;
+  color: #28A745 !important;
 }
 
 .dark-style .menu-header {
@@ -179,7 +179,7 @@
 }
 
 .dark-style a:not(.btn):not(.badge):not(.nav-link):not(.dropdown-item):not(.page-link) {
-  color: #696cff;
+  color: #28A745;
 }
 
 /* ============================================
@@ -233,7 +233,7 @@
 .dark-style .form-control:focus,
 .dark-style .form-select:focus {
   background-color: var(--sneat-input-bg) !important;
-  border-color: #696cff !important;
+  border-color: #28A745 !important;
   color: var(--sneat-text-primary) !important;
 }
 
@@ -257,8 +257,8 @@
 }
 
 .dark-style .form-check-input:checked {
-  background-color: #696cff !important;
-  border-color: #696cff !important;
+  background-color: #28A745 !important;
+  border-color: #28A745 !important;
 }
 
 /* ============================================
@@ -284,7 +284,7 @@
 }
 
 .dark-style .select2-container--bootstrap4 .select2-results__option--highlighted {
-  background-color: #696cff !important;
+  background-color: #28A745 !important;
   color: #fff !important;
 }
 
@@ -372,8 +372,8 @@
    Badges
    ============================================ */
 .dark-style .bg-label-primary {
-  background-color: rgba(105, 108, 255, 0.16) !important;
-  color: #696cff !important;
+  background-color: rgba(40, 167, 69, 0.16) !important;
+  color: #28A745 !important;
 }
 
 .dark-style .bg-label-secondary {
@@ -416,8 +416,8 @@
 }
 
 .dark-style .page-item.active .page-link {
-  background-color: #696cff !important;
-  border-color: #696cff !important;
+  background-color: #28A745 !important;
+  border-color: #28A745 !important;
   color: #fff !important;
 }
 
@@ -450,7 +450,7 @@
 }
 
 .dark-style .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-  background: #696cff !important;
+  background: #28A745 !important;
   color: #fff !important;
 }
 
@@ -483,8 +483,8 @@
    Code
    ============================================ */
 .dark-style code {
-  background-color: rgba(105, 108, 255, 0.15) !important;
-  color: #696cff !important;
+  background-color: rgba(40, 167, 69, 0.15) !important;
+  color: #28A745 !important;
 }
 
 .dark-style pre {
@@ -531,7 +531,7 @@
 }
 
 .theme-switcher:hover {
-  background-color: rgba(105, 108, 255, 0.1);
+  background-color: rgba(40, 167, 69, 0.1);
 }
 
 .theme-switcher i {
@@ -545,7 +545,7 @@
 }
 
 .theme-switcher:hover i {
-  color: #696cff;
+  color: #28A745;
 }
 
 /* Icon visibility based on theme */
@@ -609,7 +609,7 @@
 }
 
 .dark-style .table-avatar {
-  background: linear-gradient(135deg, #696cff, #9921e8);
+  background: linear-gradient(135deg, #28A745, #9921e8);
 }
 
 /* ============================================

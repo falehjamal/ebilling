@@ -2,7 +2,328 @@
 
 @section('title', 'Dashboard | ' . config('app.name', 'E-Billing'))
 
+@push('styles')
+    <style>
+        .summary-card {
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            overflow: hidden;
+        }
+        .summary-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,.15);
+        }
+        .summary-card .card-body {
+            padding: 1.25rem;
+            position: relative;
+        }
+        .summary-card .card-icon {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 2rem;
+            opacity: .25;
+        }
+        .summary-card .card-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .summary-card .card-label {
+            font-size: .8rem;
+            opacity: .85;
+            margin-bottom: 4px;
+        }
+        .summary-card .card-footer-link {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            color: rgba(255,255,255,.8);
+            font-size: .8rem;
+            background: rgba(0,0,0,.1);
+            text-decoration: none;
+            transition: background .15s;
+        }
+        .summary-card .card-footer-link:hover {
+            background: rgba(0,0,0,.2);
+            color: #fff;
+        }
+        .bg-card-blue    { background: linear-gradient(135deg, #28A745, #1e7e34); }
+        .bg-card-green   { background: linear-gradient(135deg, #28a745, #1e7e34); }
+        .bg-card-orange  { background: linear-gradient(135deg, #f57c00, #e65100); }
+        .bg-card-red     { background: linear-gradient(135deg, #e53935, #c62828); }
+        .bg-card-teal    { background: linear-gradient(135deg, #00897B, #00695C); }
+        .bg-card-yellow  { background: linear-gradient(135deg, #FDD835, #F9A825); }
+        .bg-card-purple  { background: linear-gradient(135deg, #34ce57, #28A745); }
+        .bg-card-indigo  { background: linear-gradient(135deg, #20c997, #218838); }
+
+        .status-list dt { font-size: .85rem; opacity: .9; }
+        .status-list dd { font-size: 1.1rem; font-weight: 600; margin-bottom: .35rem; }
+
+        .birthday-card .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #28A745;
+            font-size: 1.25rem;
+        }
+    </style>
+@endpush
+
 @section('content')
+
+    {{-- ========== ROW 1 — Pelanggan & Tagihan ========== --}}
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-blue">
+                <div class="card-body">
+                    <i class="bx bx-group card-icon"></i>
+                    <div class="card-value">1,823</div>
+                    <div class="card-label">Data Pelanggan</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-green">
+                <div class="card-body">
+                    <i class="bx bx-check-shield card-icon"></i>
+                    <div class="card-value">782 <small style="font-size: .55em; opacity:.8">| Rp 523jt</small></div>
+                    <div class="card-label">Pelanggan Sudah Lunas</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-orange">
+                <div class="card-body">
+                    <i class="bx bx-error card-icon"></i>
+                    <div class="card-value">1,028 <small style="font-size: .55em; opacity:.8">| Rp 412jt</small></div>
+                    <div class="card-label">Pelanggan Belum Lunas</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-green">
+                <div class="card-body">
+                    <i class="bx bx-support card-icon"></i>
+                    <div class="card-value">1,823</div>
+                    <div class="card-label">Buat Ticket Pelanggan</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- ========== ROW 2 — Ticket ========== --}}
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-blue">
+                <div class="card-body">
+                    <i class="bx bx-check-circle card-icon"></i>
+                    <div class="card-value">13</div>
+                    <div class="card-label">Ticket Pelanggan Closed</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-green">
+                <div class="card-body">
+                    <i class="bx bx-envelope-open card-icon"></i>
+                    <div class="card-value">114</div>
+                    <div class="card-label">Ticket Open</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-orange">
+                <div class="card-body">
+                    <i class="bx bx-time-five card-icon"></i>
+                    <div class="card-value">3</div>
+                    <div class="card-label">Ticket Pending</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-red">
+                <div class="card-body">
+                    <i class="bx bx-wrench card-icon"></i>
+                    <div class="card-value">6</div>
+                    <div class="card-label">Ticket Dalam Penanganan</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- ========== ROW 3 — Keuangan, Status, Tiket Aktivasi, WADM ========== --}}
+    <div class="row">
+        {{-- Keuangan --}}
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-blue">
+                <div class="card-body">
+                    <i class="bx bx-wallet card-icon"></i>
+                    <dl class="status-list mb-0">
+                        <dt>Pemasukan Bulan Ini | Hari Ini</dt>
+                        <dd>Rp 85jt | Rp 4.2jt</dd>
+                        <dt>Pengeluaran Bulan Ini</dt>
+                        <dd>Rp 12jt</dd>
+                        <dt>Balance Bulan Ini</dt>
+                        <dd>Rp 73jt</dd>
+                    </dl>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+
+        {{-- Status Langganan --}}
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-green">
+                <div class="card-body">
+                    <i class="bx bx-bar-chart card-icon"></i>
+                    <dl class="status-list mb-0">
+                        <dt>Status Langganan</dt>
+                        <dd>1,823</dd>
+                        <dt>Status On</dt>
+                        <dd>1,150</dd>
+                        <dt>Status Off</dt>
+                        <dd>673</dd>
+                    </dl>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+
+        {{-- Ticket Permintaan Aktivasi --}}
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-yellow" style="color: #333;">
+                <div class="card-body">
+                    <i class="bx bx-key card-icon" style="color: #333;"></i>
+                    <div class="card-value" style="color: #333;">0</div>
+                    <div class="card-label" style="color: #555;">Ticket Permintaan Aktivasi</div>
+                </div>
+                <a href="#" class="card-footer-link" style="color: rgba(0,0,0,.6);">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+
+        {{-- Status WADM --}}
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card summary-card bg-card-red">
+                <div class="card-body">
+                    <i class="bx bx-broadcast card-icon"></i>
+                    <div class="card-value" style="font-size: 1.2rem;">Beta Connected</div>
+                    <div class="card-label">Status WADM</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- ========== ROW 4 — Ulang Tahun & Domain Expired ========== --}}
+    <div class="row">
+        {{-- Ulang Tahun Pelanggan --}}
+        <div class="col-xl-8 col-md-7 mb-4">
+            <div class="card birthday-card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title mb-0">
+                        <i class="bx bx-cake text-primary me-1"></i> Ulang Tahun Pelanggan
+                        <span class="badge bg-primary ms-1">Februari 2026 | Rp 4.000.000</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">Delvia Muliawaty</h6>
+                                    <small class="text-muted">16 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">Dolly Darussalam</h6>
+                                    <small class="text-muted">17 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">Satya Midhi Tanto</h6>
+                                    <small class="text-muted">18 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">Andi Agus Santul</h6>
+                                    <small class="text-muted">24 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">ATIMIT</h6>
+                                    <small class="text-muted">06 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
+                                <div>
+                                    <h6 class="mb-0 text-truncate">Indoegold</h6>
+                                    <small class="text-muted">14 Februari 2026</small><br>
+                                    <small class="text-muted">e-billing art 4</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-primary fw-semibold">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Data Domain Akan Expired --}}
+        <div class="col-xl-4 col-md-5 mb-4">
+            <div class="card summary-card bg-card-red">
+                <div class="card-body text-center py-4">
+                    <i class="bx bx-x-circle" style="font-size: 4rem; opacity: .3;"></i>
+                    <div class="card-value mt-2">165</div>
+                    <div class="card-label">Data Domain Akan Expired</div>
+                </div>
+                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{-- ========== KONTEN SEBELUMNYA ========== --}}
     <div class="row">
         <div class="col-lg-8 mb-4 order-0">
             <div class="card">
@@ -42,7 +363,7 @@
                 </div>
                 <div class="col-6 col-md-12 col-lg-6 mb-4">
                     <div class="card"
-                        style="background: linear-gradient(135deg, #17a2b8, #6f42c1); border: none; border-radius: 12px;">
+                        style="background: linear-gradient(135deg, #20c997, #218838); border: none; border-radius: 12px;">
                         <div class="card-body">
                             <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Sudah Dibayar</h6>
                             <h3 class="text-white text-nowrap mb-1">Rp 98jt</h3>
@@ -118,7 +439,7 @@
                 </div>
                 <div class="col-6 mb-4">
                     <div class="card"
-                        style="background: linear-gradient(135deg, #696cff, #5F72FF); border: none; border-radius: 12px;">
+                        style="background: linear-gradient(135deg, #28A745, #1e7e34); border: none; border-radius: 12px;">
                         <div class="card-body">
                             <h6 class="text-white-50 mb-1" style="font-size: 0.8rem;">Pelanggan</h6>
                             <h3 class="text-white mb-1">1,250</h3>

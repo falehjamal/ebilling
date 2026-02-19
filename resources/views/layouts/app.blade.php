@@ -47,7 +47,7 @@
             justify-content: center;
             font-weight: 600;
             color: #fff;
-            background: linear-gradient(135deg, #5f72ff, #9921e8);
+            background: linear-gradient(135deg, #28A745, #1e7e34);
             text-transform: uppercase;
         }
     </style>

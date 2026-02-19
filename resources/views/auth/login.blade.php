@@ -31,7 +31,7 @@
                         <div class="app-brand justify-content-center mb-4">
                             <a href="{{ route('login') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo">
-                                    <i class='bx bx-receipt fs-4' style="color: #696cff;"></i>
+                                    <i class='bx bx-receipt fs-4' style="color: #28A745;"></i>
                                 </span>
                                 <span class="app-brand-text fs-4 text-body fw-bolder">{{ config('app.name', 'E-Billing') }}</span>
                             </a>
