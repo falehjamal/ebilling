@@ -73,6 +73,11 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <div class="flex-grow-1 overflow-hidden me-3">
+                            <marquee behavior="scroll" direction="left" scrollamount="3" class="text-muted small fw-semibold" style="line-height: 2;">
+                                Selamat datang di Sistem Informasi e-Billing PT Altech Sistem Indonesia
+                            </marquee>
+                        </div>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item me-2">
                                 <button type="button" class="theme-switcher" id="themeSwitcher" title="Ganti Tema">

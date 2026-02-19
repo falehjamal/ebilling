@@ -1,14 +1,17 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
-        <a href="{{ route('dashboard') }}" class="app-brand-link">
-            <span class="app-brand-logo">
-                <img src="{{ asset('img/ebilling.png') }}" alt="Logo" style="max-height: 38px; width: auto;">
-            </span>
-        </a>
-
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-        </a>
+    <div class="app-brand demo" style="display: flex; flex-direction: column; align-items: center; padding: 1rem .75rem .5rem; min-height: auto; height: auto; overflow: visible;">
+        <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="flex-grow-1"></div>
+            <a href="{{ route('dashboard') }}" class="app-brand-link" style="justify-content: center;">
+                <img src="{{ asset('img/ebilling.png') }}" alt="Logo" style="max-height: 55px; width: auto;">
+            </a>
+            <div class="flex-grow-1 d-flex justify-content-end">
+                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large d-block d-xl-none">
+                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                </a>
+            </div>
+        </div>
+        <span style="display: block; text-align: center; font-size: .65rem; color: #a1acb8; line-height: 1.3; letter-spacing: .3px; margin-top: 4px;">PT. Altech Sistem Indonesia</span>
     </div>
 
     <div class="menu-inner-shadow"></div>

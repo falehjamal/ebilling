@@ -38,11 +38,41 @@
         .status-list dt { font-size: .85rem; opacity: .9; }
         .status-list dd { font-size: 1.1rem; font-weight: 600; margin-bottom: .35rem; }
 
+        .new-customer-card .customer-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background .15s;
+        }
+        .new-customer-card .customer-item:hover { background: rgba(40,167,69,.05); }
         .new-customer-card .avatar-circle {
-            width: 48px; height: 48px; border-radius: 50%;
+            width: 42px; height: 42px; min-width: 42px; border-radius: 50%;
             background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
             display: flex; align-items: center; justify-content: center;
-            color: #28A745; font-size: 1.25rem;
+            color: #28A745; font-size: 1.1rem;
+        }
+        .new-customer-card .customer-info h6 {
+            font-size: .85rem; margin-bottom: 2px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 140px;
+        }
+        @media (max-width: 575.98px) {
+            .new-customer-card .customer-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 6px;
+                padding: 12px 6px;
+            }
+            .new-customer-card .customer-info h6 {
+                max-width: 100%;
+                white-space: normal;
+                font-size: .8rem;
+            }
+            .new-customer-card .avatar-circle {
+                width: 38px; height: 38px; min-width: 38px; font-size: 1rem;
+            }
         }
 
         .money-wrap { display: inline-flex; align-items: center; gap: 4px; }
@@ -206,9 +236,9 @@
         </div>
     </div>
 
-    {{-- ========== ROW 4 — Pelanggan Baru & Domain Expired ========== --}}
+    {{-- ========== ROW 4 — Pelanggan Baru ========== --}}
     <div class="row">
-        <div class="col-xl-8 col-md-7 mb-4">
+        <div class="col-12 mb-4">
             <div class="card new-customer-card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0">
@@ -217,63 +247,63 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">Delvia Muliawaty</h6>
-                                    <small class="text-muted">16 Februari 2026</small><br>
+                    <div class="row g-2">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>Delvia Muliawaty</h6>
+                                    <small class="text-muted">16 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">Dolly Darussalam</h6>
-                                    <small class="text-muted">17 Februari 2026</small><br>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>Dolly Darussalam</h6>
+                                    <small class="text-muted">17 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">Satya Midhi Tanto</h6>
-                                    <small class="text-muted">18 Februari 2026</small><br>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>Satya Midhi Tanto</h6>
+                                    <small class="text-muted">18 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">Andi Agus Santul</h6>
-                                    <small class="text-muted">24 Februari 2026</small><br>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>Andi Agus Santul</h6>
+                                    <small class="text-muted">24 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">ATIMIT</h6>
-                                    <small class="text-muted">06 Februari 2026</small><br>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>ATIMIT</h6>
+                                    <small class="text-muted">06 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="avatar-circle"><i class="bx bx-user"></i></div>
-                                <div>
-                                    <h6 class="mb-0 text-truncate">Indoegold</h6>
-                                    <small class="text-muted">14 Februari 2026</small><br>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                            <div class="customer-item">
+                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
+                                <div class="customer-info">
+                                    <h6>Indoegold</h6>
+                                    <small class="text-muted">14 Feb 2026</small><br>
                                     <small class="text-muted">e-billing art 4</small>
                                 </div>
                             </div>
@@ -286,65 +316,9 @@
             </div>
         </div>
 
-        <div class="col-xl-4 col-md-5 mb-4">
-            <div class="card summary-card bg-card-red">
-                <div class="card-body text-center py-4">
-                    <i class="bx bx-x-circle" style="font-size: 4rem; opacity: .3;"></i>
-                    <div class="card-value mt-2">165</div>
-                    <div class="card-label">Data Domain Akan Expired</div>
-                </div>
-                <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
-            </div>
-        </div>
     </div>
 
-    {{-- ========== ROW 5 — Welcome + Laporan ========== --}}
-    <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat datang di E-Billing!</h5>
-                            <p class="mb-4">
-                                Kelola tagihan dan pembayaran dengan mudah. Pantau ringkasan keuangan Anda di dashboard ini.
-                            </p>
-                            <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary">Lihat Tagihan</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                            <img src="{{ asset('template/assets/img/illustrations/man-with-laptop-light.png') }}"
-                                height="140" alt="Illustration"
-                                data-app-dark-img="{{ asset('template/assets/img/illustrations/man-with-laptop-dark.png') }}"
-                                data-app-light-img="{{ asset('template/assets/img/illustrations/man-with-laptop-light.png') }}" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 order-1">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                        <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                            <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
-                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
-                            </div>
-                            <div class="mt-sm-auto">
-                                <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
-                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
-                            </div>
-                        </div>
-                        <div id="profileReportChart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- ========== ROW 6 — Pendapatan Bulanan ========== --}}
+    {{-- ========== ROW 5 — Pendapatan Bulanan + Statistik + Laporan ========== --}}
     <div class="row">
         <div class="col-12 col-lg-8 mb-4">
             <div class="card">
@@ -393,9 +367,26 @@
             </div>
         </div>
 
-        {{-- Statistik Tagihan --}}
+        {{-- Statistik Tagihan + Laporan --}}
         <div class="col-12 col-lg-4 mb-4">
-            <div class="card h-100">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                        <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                            <div class="card-title">
+                                <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
+                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
+                            </div>
+                            <div class="mt-sm-auto">
+                                <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
+                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
+                            </div>
+                        </div>
+                        <div id="profileReportChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
                         <h5 class="m-0 me-2">Statistik Tagihan</h5>
@@ -459,7 +450,7 @@
         </div>
     </div>
 
-    {{-- ========== ROW 7 — Pemasukan/Pengeluaran (Tab) + Transaksi Terakhir ========== --}}
+    {{-- ========== ROW 6 — Pemasukan/Pengeluaran (Tab) + Transaksi Terakhir ========== --}}
     <div class="row">
         <div class="col-md-6 col-lg-8 mb-4">
             <div class="card h-100">
