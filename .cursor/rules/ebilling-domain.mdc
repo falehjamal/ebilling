@@ -1,0 +1,55 @@
+---
+alwaysApply: true
+---
+
+# Domain eBilling
+
+Aplikasi ini adalah sistem **electronic billing** untuk PT. Altech Sistem Indonesia.
+Mata uang utama: **Rupiah (IDR)**.
+
+## Entitas Domain Utama
+
+- **Customer (Pelanggan)** — pihak yang ditagih
+- **InvoiceCategory (Kategori Tagihan)** — klasifikasi jenis tagihan
+- **Invoice (Tagihan)** — dokumen tagihan ke pelanggan
+- **InvoiceItem (Item Tagihan)** — detail baris per tagihan
+- **Payment (Pembayaran)** — catatan pembayaran atas tagihan
+
+## Penanganan Uang / Currency
+
+- Simpan nilai uang dalam kolom `decimal(15,2)` di database.
+- Jangan gunakan `float` atau `double` untuk uang — presisi akan hilang.
+- Casting di model: gunakan `'decimal:2'` cast.
+- Format tampilan Rupiah: gunakan `Number::currency($amount, 'IDR', 'id')` atau helper custom.
+- Semua kalkulasi (subtotal, pajak, diskon, grand total) harus dilakukan di **backend**, bukan di frontend.
+
+## Integritas Data Finansial
+
+- **Soft deletes wajib** untuk model: `Invoice`, `Payment`, `Customer`.
+- Jangan hard delete data transaksi. Gunakan `SoftDeletes` trait.
+- Invoice yang sudah dibayar **tidak boleh** diedit atau dihapus.
+- Setiap perubahan status tagihan/pembayaran harus tercatat (audit trail).
+
+## Status & Enum
+
+Gunakan PHP Enum untuk status:
+
+- `InvoiceStatus`: `Draft`, `Sent`, `Paid`, `Overdue`, `Cancelled`
+- `PaymentMethod`: `Cash`, `BankTransfer`, `Qris`
+- `PaymentStatus`: `Pending`, `Confirmed`, `Rejected`
+
+## Nomor Tagihan
+
+- Gunakan format auto-generate yang konsisten, misal: `INV-2026-02-00001`.
+- Nomor harus unique dan sequential per periode.
+
+## Laporan
+
+- Laporan Keuangan dan Rekap Tagihan harus menggunakan query yang di-optimize (aggregate, index).
+- Hindari N+1 di halaman laporan — selalu eager load relationships.
+
+## Validasi Bisnis
+
+- Tanggal jatuh tempo (`due_date`) harus >= tanggal tagihan (`invoice_date`).
+- Total pembayaran tidak boleh melebihi sisa tagihan.
+- Customer tidak bisa dihapus jika masih punya tagihan aktif.

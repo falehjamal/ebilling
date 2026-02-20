@@ -1,0 +1,32 @@
+---
+globs:
+  - "resources/**"
+---
+
+# Konvensi Frontend
+
+Rule ini aktif hanya saat bekerja di folder `resources/`.
+
+## Blade Templates
+
+- Gunakan layout inheritance: `@extends('layouts.app')` dan `@section`.
+- Pecah komponen berulang ke `@include` atau Blade component.
+- Hindari logic PHP kompleks di Blade — pindahkan ke controller atau view composer.
+
+## Format Angka & Uang
+
+- Tampilan Rupiah: `Rp` + format ribuan titik, desimal koma (contoh: `Rp 1.500.000,00`).
+- Gunakan helper PHP untuk format, jangan format manual di JavaScript.
+- Fitur toggle visibility nilai uang (`.money-toggle`) sudah ada di dashboard — reuse pattern ini.
+
+## Asset & Bundling
+
+- Project menggunakan **Vite** untuk bundling.
+- Jika perubahan frontend tidak terlihat, jalankan `npm run build` atau `npm run dev`.
+- Taruh CSS custom di `@push('styles')` dan JS di `@push('scripts')`.
+
+## UI Framework
+
+- Project menggunakan **Sneat Bootstrap template** (BoxIcons, menu vertical).
+- Ikuti pattern class yang sudah ada: `.menu-item`, `.card`, `.summary-card`, dll.
+- Warna utama hijau (`#28A745`) — konsistenkan di komponen baru.

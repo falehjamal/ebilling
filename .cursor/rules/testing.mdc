@@ -1,0 +1,38 @@
+---
+globs:
+  - "tests/**"
+---
+
+# Konvensi Testing (Pest 4)
+
+Rule ini aktif hanya saat bekerja di folder `tests/`.
+
+## Struktur Test
+
+- Feature test: `tests/Feature/` — test HTTP, controller, integrasi
+- Unit test: `tests/Unit/` — test logic murni, service, helper
+- Mayoritas test harus **feature test**.
+
+## Penulisan Test
+
+- Gunakan `it()` atau `test()` — ikuti konvensi yang sudah ada di project.
+- Deskripsi test dalam Bahasa Inggris, singkat dan jelas.
+- Satu test = satu behavior yang diuji.
+
+## Database & Factory
+
+- Gunakan `RefreshDatabase` trait untuk test yang butuh database.
+- Gunakan factory dan state untuk setup data, bukan manual create.
+- Untuk data keuangan di test, gunakan nilai yang mudah diverifikasi (misal: 100000, 50000).
+
+## Assertion Keuangan
+
+- Saat assert nilai uang, gunakan `toEqual()` dengan nilai exact, bukan `toBeGreaterThan()`.
+- Test kalkulasi: subtotal, pajak, diskon, grand total.
+- Test validasi: pembayaran tidak melebihi sisa tagihan.
+
+## Menjalankan Test
+
+- `php artisan test --compact` — jalankan semua test
+- `php artisan test --compact --filter=NamaTest` — filter spesifik
+- Jangan hapus test tanpa approval.

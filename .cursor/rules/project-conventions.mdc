@@ -1,0 +1,42 @@
+---
+alwaysApply: true
+---
+
+# Konvensi Project eBilling
+
+Rule ini melengkapi dan meng-override `laravel-boost.mdc` (auto-generated) dimana perlu.
+
+## Komentar Kode (Override Kontradiksi Boost)
+
+Boost memiliki dua instruksi yang bertentangan soal komentar. Berikut aturan final:
+
+- Gunakan **PHPDoc blocks** untuk dokumentasi class, method, dan property.
+- **JANGAN** tulis inline comment kecuali logic benar-benar kompleks dan tidak bisa dipahami dari kode saja.
+- Komentar narasi seperti `// ambil data user` atau `// return result` **dilarang**.
+- Nama variabel dan method yang deskriptif lebih baik daripada komentar.
+
+## Bahasa
+
+- Seluruh respons AI wajib dalam **Bahasa Indonesia**.
+- Penamaan code (variable, class, method, route) tetap dalam **Bahasa Inggris**.
+- Komentar PHPDoc boleh dalam Bahasa Indonesia jika menjelaskan domain bisnis lokal.
+
+## Struktur Direktori
+
+Gunakan konvensi berikut untuk organisasi kode:
+
+- `app/Models/` — Eloquent models
+- `app/Http/Controllers/` — Controllers
+- `app/Http/Requests/` — Form Request validation
+- `app/Services/` — Business logic layer
+- `app/Enums/` — PHP Enums
+- `app/Policies/` — Authorization policies
+- `resources/views/` — Blade templates
+
+## Penamaan
+
+- Model: singular PascalCase (`Customer`, `Invoice`, `Payment`)
+- Controller: singular PascalCase + `Controller` (`CustomerController`)
+- Form Request: deskriptif + `Request` (`StoreInvoiceRequest`, `UpdatePaymentRequest`)
+- Migration: snake_case deskriptif (`create_invoices_table`, `add_tax_to_invoices_table`)
+- Enum: singular PascalCase (`InvoiceStatus`, `PaymentMethod`)
