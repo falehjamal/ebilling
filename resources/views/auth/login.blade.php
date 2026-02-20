@@ -28,15 +28,16 @@
             <div class="authentication-inner">
                 <div class="card">
                     <div class="card-body">
-                        <div class="app-brand justify-content-center mb-4">
-                            <a href="{{ route('login') }}" class="app-brand-link gap-2">
-                                <span class="app-brand-logo">
-                                    <img src="{{ asset('img/ebilling.png') }}" alt="Logo" style="max-height: 48px; width: auto;">
-                                </span>
-                            </a>
+                        <div class="text-center mb-4">
+                            <div class="app-brand justify-content-center mb-2">
+                                <a href="{{ route('login') }}" class="app-brand-link gap-2">
+                                    <span class="app-brand-logo">
+                                        <img src="{{ asset('img/ebilling.png') }}" alt="Logo" style="max-height: 48px; width: auto;">
+                                    </span>
+                                </a>
+                            </div>
+                            <span style="display: block; font-size: .75rem; color: #a1acb8; line-height: 1.3; letter-spacing: .3px;">PT. Altech Sistem Indonesia</span>
                         </div>
-                        <h4 class="mb-2 text-center">Selamat Datang!</h4>
-                        <p class="mb-4 text-center">Silakan masuk untuk mengakses sistem billing.</p>
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -50,7 +51,7 @@
                                 <label for="id_akun" class="form-label">ID Akun</label>
                                 <input type="text" class="form-control @error('id_akun') is-invalid @enderror"
                                     id="id_akun" name="id_akun" value="{{ old('id_akun') }}"
-                                    placeholder="Masukkan ID akun" autofocus required>
+                                    placeholder="9321" autofocus required>
                                 @error('id_akun')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -59,7 +60,7 @@
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror"
                                     id="username" name="username" value="{{ old('username') }}"
-                                    placeholder="Masukkan username" required>
+                                    placeholder="ahmad" required>
                                 @error('username')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -76,12 +77,6 @@
                                     @error('password')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                                    <label class="form-check-label" for="remember">Ingat Saya</label>
                                 </div>
                             </div>
                             <div class="mb-3">
