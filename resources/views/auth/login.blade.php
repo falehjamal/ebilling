@@ -47,11 +47,20 @@
                         <form method="POST" action="{{ route('login') }}" class="mb-3" id="formAuthentication">
                             @csrf
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" value="{{ old('email') }}"
-                                    placeholder="email@contoh.com" autofocus required>
-                                @error('email')
+                                <label for="id_akun" class="form-label">ID Akun</label>
+                                <input type="text" class="form-control @error('id_akun') is-invalid @enderror"
+                                    id="id_akun" name="id_akun" value="{{ old('id_akun') }}"
+                                    placeholder="Masukkan ID akun" autofocus required>
+                                @error('id_akun')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    id="username" name="username" value="{{ old('username') }}"
+                                    placeholder="Masukkan username" required>
+                                @error('username')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
