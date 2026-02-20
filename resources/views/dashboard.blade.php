@@ -236,10 +236,11 @@
         </div>
     </div>
 
-    {{-- ========== ROW 4 — Pelanggan Baru ========== --}}
+    {{-- ========== ROW 4 — Pelanggan Baru & Laporan ========== --}}
     <div class="row">
-        <div class="col-12 mb-4">
-            <div class="card new-customer-card">
+        {{-- Pelanggan Baru --}}
+        <div class="col-12 col-lg-8 mb-4">
+            <div class="card new-customer-card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0">
                         <i class="bx bx-user-plus text-primary me-1"></i> Pelanggan Baru
@@ -248,7 +249,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-2">
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -258,7 +259,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -268,7 +269,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -278,7 +279,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -288,7 +289,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -298,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
@@ -316,13 +317,33 @@
             </div>
         </div>
 
+        {{-- Laporan Bulan Ini --}}
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                        <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                            <div class="card-title">
+                                <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
+                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
+                            </div>
+                            <div class="mt-sm-auto">
+                                <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
+                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
+                            </div>
+                        </div>
+                        <div id="profileReportChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    {{-- ========== ROW 5 — Pendapatan Bulanan + Statistik + Laporan ========== --}}
+    {{-- ========== ROW 5 — Pendapatan Bulanan + Statistik ========== --}}
     <div class="row">
         <div class="col-12 col-lg-8 mb-4">
-            <div class="card">
-                <div class="row row-bordered g-0">
+            <div class="card h-100">
+                <div class="row row-bordered g-0 h-100">
                     <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">Pendapatan Bulanan</h5>
                         <div id="totalRevenueChart" class="px-2"></div>
@@ -367,26 +388,9 @@
             </div>
         </div>
 
-        {{-- Statistik Tagihan + Laporan --}}
+        {{-- Statistik Tagihan --}}
         <div class="col-12 col-lg-4 mb-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                        <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                            <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
-                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
-                            </div>
-                            <div class="mt-sm-auto">
-                                <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
-                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
-                            </div>
-                        </div>
-                        <div id="profileReportChart"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
                         <h5 class="m-0 me-2">Statistik Tagihan</h5>
