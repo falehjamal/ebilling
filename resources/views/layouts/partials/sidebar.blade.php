@@ -151,9 +151,10 @@
                 <div>Poin Pelanggan</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link"><div>Sub Menu</div></a>
-                </li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Poin Pelanggan</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Pengaturan Poin</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Pengaturan Hadiah Poin</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Pengajuan Penukaran Poin</div></a></li>
             </ul>
         </li>
 
@@ -163,9 +164,13 @@
                 <div>Management Mikrotik</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link"><div>Sub Menu</div></a>
-                </li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Monitoring</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Session User PPPOE</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data User Static</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data User Static Tree</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data User PPPOE</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data User Hotspot</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Session User Hotspot</div></a></li>
             </ul>
         </li>
 
@@ -175,9 +180,8 @@
                 <div>Ticket</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link"><div>Sub Menu</div></a>
-                </li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Ticket Pelanggan</div></a></li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Ticket General</div></a></li>
             </ul>
         </li>
 
@@ -187,9 +191,7 @@
                 <div>Voucher</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="#" class="menu-link"><div>Sub Menu</div></a>
-                </li>
+                <li class="menu-item"><a href="#" class="menu-link"><div>Data Voucher</div></a></li>
             </ul>
         </li>
 
@@ -249,7 +251,6 @@
                 <li class="menu-item"><a href="#" class="menu-link"><div>Pembayaran Sales Bulanan</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Pembayaran Lokasi</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Pengeluaran Tahunan</div></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><div>Pengeluaran Bulanan</div></a></li>
             </ul>
         </li>
     </ul>
