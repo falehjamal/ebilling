@@ -48,11 +48,11 @@
                         <form method="POST" action="{{ route('login') }}" class="mb-3" id="formAuthentication">
                             @csrf
                             <div class="mb-3">
-                                <label for="id_akun" class="form-label">ID Akun</label>
-                                <input type="text" class="form-control @error('id_akun') is-invalid @enderror"
-                                    id="id_akun" name="id_akun" value="{{ old('id_akun') }}"
-                                    placeholder="9321" autofocus required>
-                                @error('id_akun')
+                                <label for="account" class="form-label">Account</label>
+                                <input type="text" class="form-control @error('account') is-invalid @enderror"
+                                    id="account" name="account" value="{{ old('account') }}"
+                                    placeholder="39511" autofocus required>
+                                @error('account')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -84,7 +84,9 @@
                             </div>
                         </form>
                         <p class="text-center mb-0">
-                            <small class="text-muted">Hubungi administrator jika lupa password.</small>
+                            <a href="https://e.ebilling.id/billing/lupa" target="_blank" class="text-muted">Lupa Password</a>
+                            <span class="text-muted"> · </span>
+                            <a href="https://e.ebilling.id/billing/paket" target="_blank" class="text-muted">Registrasi</a>
                         </p>
                     </div>
                 </div>

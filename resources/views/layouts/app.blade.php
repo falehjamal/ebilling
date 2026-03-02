@@ -96,11 +96,11 @@
                                         <a class="dropdown-item" href="#">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online avatar-initials">A</div>
+                                                    <div class="avatar avatar-online avatar-initials">{{ strtoupper(substr(billing_user('nama_warga') ?? 'A', 0, 1)) }}</div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">Administrator</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{ billing_user('nama_warga') ?? 'User' }}</span>
+                                                    <small class="text-muted">{{ billing_user('level') ?? 'Pelanggan' }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -114,10 +114,13 @@
                                     </li>
                                     <li><div class="dropdown-divider"></div></li>
                                     <li>
-                                        <a class="dropdown-item text-danger" href="{{ route('login') }}">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Keluar</span>
-                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger w-100 text-start border-0 bg-transparent">
+                                                <i class="bx bx-power-off me-2"></i>
+                                                <span class="align-middle">Keluar</span>
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

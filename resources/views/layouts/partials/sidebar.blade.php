@@ -253,5 +253,15 @@
                 <li class="menu-item"><a href="#" class="menu-link"><div>Pengeluaran Tahunan</div></a></li>
             </ul>
         </li>
+
+        <li class="menu-item">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="menu-link w-100 text-start border-0 bg-transparent text-danger">
+                    <i class="menu-icon tf-icons bx bx-log-out"></i>
+                    <div>Keluar</div>
+                </button>
+            </form>
+        </li>
     </ul>
 </aside>
