@@ -9,6 +9,6 @@ if (! function_exists('billing_user')) {
             return $user;
         }
 
-        return $user[$key] ?? null;
+        return (is_array($user) && isset($user[$key])) ? $user[$key] : null;
     }
 }

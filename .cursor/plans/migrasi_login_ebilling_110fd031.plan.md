@@ -63,7 +63,7 @@ Gunakan [db_billing.sql](db_billing.sql) sebagai referensi schema gateway:
 
 ### 2.1 Model
 
-- `**BillingAccount**` — Eloquent untuk `tb_db_billing_account` (gateway)
+- `**BillingAccount`** — Eloquent untuk `tb_db_billing_account` (gateway)
 - `**Warga**` (atau `TenantUser`) — model dinamis untuk `tb_warga_$account`; table name di-set dari `account` (e.g. `tb_warga_39511`)
 
 ### 2.2 Service: `TenantConnectionService`
@@ -198,20 +198,20 @@ Update [resources/views/auth/login.blade.php](resources/views/auth/login.blade.p
 ## 9. File yang Perlu Dibuat/Diubah
 
 
-| Aksi | File                                                                  |
-| ---- | --------------------------------------------------------------------- |
-| Buat | `app/Services/TenantConnectionService.php`                            |
-| Buat | `app/Services/LegacyLoginService.php`                                 |
-| Buat | `app/Http/Controllers/Auth/AuthenticatedSessionController.php`        |
-| Buat | `app/Http/Requests/Auth/LoginRequest.php`                             |
-| Buat | `app/Http/Middleware/EnsureBillingAuthenticated.php`                  |
-| Buat | `app/Http/Middleware/ResolveTenantConnection.php`                     |
-| Buat | `app/Models/BillingAccount.php`                                       |
-| Buat | `config/billing.php` (redirect mapping)                               |
+| Aksi | File                                                                              |
+| ---- | --------------------------------------------------------------------------------- |
+| Buat | `app/Services/TenantConnectionService.php`                                        |
+| Buat | `app/Services/LegacyLoginService.php`                                             |
+| Buat | `app/Http/Controllers/Auth/AuthenticatedSessionController.php`                    |
+| Buat | `app/Http/Requests/Auth/LoginRequest.php`                                         |
+| Buat | `app/Http/Middleware/EnsureBillingAuthenticated.php`                              |
+| Buat | `app/Http/Middleware/ResolveTenantConnection.php`                                 |
+| Buat | `app/Models/BillingAccount.php`                                                   |
+| Buat | `config/billing.php` (redirect mapping)                                           |
 | Edit | `config/database.php` (koneksi tenant dinamis; gateway = default mysql dari .env) |
-| Edit | `bootstrap/app.php` (registrasi middleware)                           |
-| Edit | `routes/web.php` (route login POST, logout, middleware)               |
-| Edit | `resources/views/auth/login.blade.php` (penyesuaian field jika perlu) |
+| Edit | `bootstrap/app.php` (registrasi middleware)                                       |
+| Edit | `routes/web.php` (route login POST, logout, middleware)                           |
+| Edit | `resources/views/auth/login.blade.php` (penyesuaian field jika perlu)             |
 
 
 ---
