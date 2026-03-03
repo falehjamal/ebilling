@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>Masuk | {{ config('app.name', 'E-Billing') }}</title>
+    <title>{{ config('app.name', 'E-Billing') }} | Login</title>
     <meta name="description" content="Sistem E-Billing">
-    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/ebilling.png') }}">
     <link rel="stylesheet" href="{{ asset('vendor/fonts/public-sans.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/fonts/boxicons.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/css/core.css') }}"

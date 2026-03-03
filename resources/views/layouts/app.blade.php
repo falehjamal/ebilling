@@ -22,7 +22,7 @@
 
     <meta name="description" content="Sistem E-Billing" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/favicon/favicon.ico') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('img/ebilling.png') }}" />
 
     <link rel="stylesheet" href="{{ asset('vendor/fonts/public-sans.css') }}" />
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/fonts/boxicons.css') }}" />
