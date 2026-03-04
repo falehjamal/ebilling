@@ -80,9 +80,9 @@
                         </div>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item me-3">
-                                <span class="text-muted small" id="pageLoadTime" title="Waktu load halaman">
-                                    <i class="bx bx-time-five me-1"></i>
-                                    <span id="pageLoadTimeValue">--:--:--</span>
+                                <span class="text-muted small" id="pageLoadTime" title="Page Load Time">
+                                    <i class="bx bx-loader-alt me-1"></i>
+                                    <span id="pageLoadTimeValue">--</span>
                                 </span>
                             </li>
                             <li class="nav-item me-2">
@@ -203,13 +203,18 @@
             }
         })();
 
-        (function() {
+        window.addEventListener('load', function() {
             const el = document.getElementById('pageLoadTimeValue');
-            if (el) {
-                const now = new Date();
-                el.textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            if (!el) return;
+            let loadTimeMs = 0;
+            const nav = performance.getEntriesByType('navigation')[0];
+            if (nav && nav.loadEventEnd > 0) {
+                loadTimeMs = nav.loadEventEnd - nav.startTime;
+            } else if (performance.timing && performance.timing.loadEventEnd > 0) {
+                loadTimeMs = performance.timing.loadEventEnd - performance.timing.navigationStart;
             }
-        })();
+            el.textContent = loadTimeMs < 1000 ? loadTimeMs + ' ms' : (loadTimeMs / 1000).toFixed(2) + ' s';
+        });
     </script>
 
     @stack('scripts')
