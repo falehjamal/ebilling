@@ -79,6 +79,12 @@
                             </marquee>
                         </div>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <li class="nav-item me-3">
+                                <span class="text-muted small" id="pageLoadTime" title="Waktu load halaman">
+                                    <i class="bx bx-time-five me-1"></i>
+                                    <span id="pageLoadTimeValue">--:--:--</span>
+                                </span>
+                            </li>
                             <li class="nav-item me-2">
                                 <button type="button" class="theme-switcher" id="themeSwitcher" title="Ganti Tema">
                                     <i class="bx bx-moon"></i>
@@ -194,6 +200,14 @@
             if (!localStorage.getItem('theme')) {
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 applyTheme(prefersDark ? 'dark' : 'light');
+            }
+        })();
+
+        (function() {
+            const el = document.getElementById('pageLoadTimeValue');
+            if (el) {
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             }
         })();
     </script>
