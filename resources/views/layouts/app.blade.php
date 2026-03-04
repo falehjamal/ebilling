@@ -202,17 +202,38 @@
         })();
 
         window.addEventListener('load', function() {
-            const el = document.getElementById('pageLoadTimeValue');
-            if (!el) return;
-            let loadTimeMs = 0;
-            const nav = performance.getEntriesByType('navigation')[0];
-            if (nav && nav.loadEventEnd > 0) {
-                loadTimeMs = nav.loadEventEnd - nav.startTime;
-            } else if (performance.timing && performance.timing.loadEventEnd > 0) {
-                loadTimeMs = performance.timing.loadEventEnd - performance.timing.navigationStart;
-            }
-            const loadTimeSec = loadTimeMs / 1000;
-            el.textContent = loadTimeSec.toFixed(3) + ' detik';
+            setTimeout(function() {
+                const el = document.getElementById('pageLoadTimeValue');
+                if (!el) return;
+                let loadTimeMs = 0;
+                const nav = performance.getEntriesByType('navigation')[0];
+                const timing = performance.timing;
+
+                if (nav) {
+                    if (nav.loadEventEnd > 0) {
+                        loadTimeMs = nav.loadEventEnd - nav.startTime;
+                    } else if (nav.loadEventStart > 0) {
+                        loadTimeMs = nav.loadEventStart - nav.startTime;
+                    } else if (nav.domContentLoadedEventEnd > 0) {
+                        loadTimeMs = nav.domContentLoadedEventEnd - nav.startTime;
+                    } else if (nav.responseEnd > 0) {
+                        loadTimeMs = nav.responseEnd - nav.startTime;
+                    }
+                }
+                if (loadTimeMs === 0 && timing) {
+                    if (timing.loadEventEnd > 0) {
+                        loadTimeMs = timing.loadEventEnd - timing.navigationStart;
+                    } else if (timing.loadEventStart > 0) {
+                        loadTimeMs = timing.loadEventStart - timing.navigationStart;
+                    } else if (timing.domContentLoadedEventEnd > 0) {
+                        loadTimeMs = timing.domContentLoadedEventEnd - timing.navigationStart;
+                    } else if (timing.responseEnd > 0) {
+                        loadTimeMs = timing.responseEnd - timing.navigationStart;
+                    }
+                }
+
+                el.textContent = loadTimeMs > 0 ? (loadTimeMs / 1000).toFixed(3) + ' detik' : '--';
+            }, 0);
         });
     </script>
 
