@@ -89,13 +89,38 @@
 
 @section('content')
 
+    @php
+        $warga = $warga ?? 0;
+        $sudahbayar = $sudahbayar ?? 0;
+        $total_lunas = $total_lunas ?? 0;
+        $belumbayar = $belumbayar ?? 0;
+        $jumlah_bayar = $jumlah_bayar ?? 0;
+        $laporanclosed = $laporanclosed ?? 0;
+        $laporanopen = $laporanopen ?? 0;
+        $laporanpending = $laporanpending ?? 0;
+        $laporanpenanganan = $laporanpenanganan ?? 0;
+        $laporanaktivasi = $laporanaktivasi ?? 0;
+        $total_iuran = $total_iuran ?? 0;
+        $total_iuran_hariini = $total_iuran_hariini ?? 0;
+        $totaltrxhariini = $totaltrxhariini ?? 0;
+        $total_pengeluaran = $total_pengeluaran ?? 0;
+        $balance = $balance ?? 0;
+        $on = $on ?? 0;
+        $off = $off ?? 0;
+        $warga_baru = $warga_baru ?? 0;
+        $harga_baru = $harga_baru ?? 0;
+        $bulaninii = $bulaninii ?? now()->translatedFormat('F Y');
+        $pelangganBaru = $pelangganBaru ?? [];
+        $transaksiTerakhir = $transaksiTerakhir ?? [];
+    @endphp
+
     {{-- ========== ROW 1 — Pelanggan & Tagihan ========== --}}
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card summary-card bg-card-blue">
                 <div class="card-body">
                     <i class="bx bx-group card-icon"></i>
-                    <div class="card-value">1,823</div>
+                    <div class="card-value">{{ number_format($warga) }}</div>
                     <div class="card-label">Data Pelanggan</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -105,7 +130,7 @@
             <div class="card summary-card bg-card-green">
                 <div class="card-body">
                     <i class="bx bx-check-shield card-icon"></i>
-                    <div class="card-value">782 <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 523jt"></i></span></small></div>
+                    <div class="card-value">{{ number_format($sudahbayar) }} <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_lunas) }}"></i></span></small></div>
                     <div class="card-label">Pelanggan Sudah Lunas</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -115,7 +140,7 @@
             <div class="card summary-card bg-card-orange">
                 <div class="card-body">
                     <i class="bx bx-error card-icon"></i>
-                    <div class="card-value">1,028 <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 412jt"></i></span></small></div>
+                    <div class="card-value">{{ number_format($belumbayar) }} <small style="font-size: .55em; opacity:.8">| <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($jumlah_bayar) }}"></i></span></small></div>
                     <div class="card-label">Pelanggan Belum Lunas</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -125,7 +150,7 @@
             <div class="card summary-card bg-card-green">
                 <div class="card-body">
                     <i class="bx bx-support card-icon"></i>
-                    <div class="card-value">1,823</div>
+                    <div class="card-value">{{ number_format($warga) }}</div>
                     <div class="card-label">Buat Ticket Pelanggan</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -139,7 +164,7 @@
             <div class="card summary-card bg-card-blue">
                 <div class="card-body">
                     <i class="bx bx-check-circle card-icon"></i>
-                    <div class="card-value">13</div>
+                    <div class="card-value">{{ number_format($laporanclosed) }}</div>
                     <div class="card-label">Ticket Pelanggan Closed</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -149,7 +174,7 @@
             <div class="card summary-card bg-card-green">
                 <div class="card-body">
                     <i class="bx bx-envelope-open card-icon"></i>
-                    <div class="card-value">114</div>
+                    <div class="card-value">{{ number_format($laporanopen) }}</div>
                     <div class="card-label">Ticket Open</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -159,7 +184,7 @@
             <div class="card summary-card bg-card-orange">
                 <div class="card-body">
                     <i class="bx bx-time-five card-icon"></i>
-                    <div class="card-value">3</div>
+                    <div class="card-value">{{ number_format($laporanpending) }}</div>
                     <div class="card-label">Ticket Pending</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -169,7 +194,7 @@
             <div class="card summary-card bg-card-red">
                 <div class="card-body">
                     <i class="bx bx-wrench card-icon"></i>
-                    <div class="card-value">6</div>
+                    <div class="card-value">{{ number_format($laporanpenanganan) }}</div>
                     <div class="card-label">Ticket Dalam Penanganan</div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -185,11 +210,11 @@
                     <i class="bx bx-wallet card-icon"></i>
                     <dl class="status-list mb-0">
                         <dt>Pemasukan Bulan Ini | Hari Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 85jt"></i></span> | <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 4.2jt"></i></span></dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran) }}"></i></span> | <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran_hariini) }}"></i></span> <span class="badge bg-info">({{ number_format($totaltrxhariini) }} trx)</span></dd>
                         <dt>Pengeluaran Bulan Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 12jt"></i></span></dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_pengeluaran) }}"></i></span></dd>
                         <dt>Balance Bulan Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 73jt"></i></span></dd>
+                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($balance) }}"></i></span></dd>
                     </dl>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -202,11 +227,11 @@
                     <i class="bx bx-bar-chart card-icon"></i>
                     <dl class="status-list mb-0">
                         <dt>Status Langganan</dt>
-                        <dd>1,823</dd>
+                        <dd>{{ number_format($warga) }}</dd>
                         <dt>Status On</dt>
-                        <dd>1,150</dd>
+                        <dd>{{ number_format($on) }}</dd>
                         <dt>Status Off</dt>
-                        <dd>673</dd>
+                        <dd>{{ number_format($off) }}</dd>
                     </dl>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -217,7 +242,7 @@
             <div class="card summary-card bg-card-yellow" style="color: #333;">
                 <div class="card-body">
                     <i class="bx bx-key card-icon" style="color: #333;"></i>
-                    <div class="card-value" style="color: #333;">0</div>
+                    <div class="card-value" style="color: #333;">{{ number_format($laporanaktivasi) }}</div>
                     <div class="card-label" style="color: #555;">Ticket Permintaan Aktivasi</div>
                 </div>
                 <a href="#" class="card-footer-link" style="color: rgba(0,0,0,.6);">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -244,71 +269,27 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title mb-0">
                         <i class="bx bx-user-plus text-primary me-1"></i> Pelanggan Baru
-                        <span class="badge bg-primary ms-1">Februari 2026</span>
+                        <span class="badge bg-primary ms-1">{{ $warga_baru }} PSB {{ $bulaninii }} | {{ format_idr($harga_baru) }}</span>
                     </h5>
                 </div>
                 <div class="card-body">
                     <div class="row g-2">
+                        @forelse($pelangganBaru as $p)
                         <div class="col-xl-4 col-lg-6 col-md-4 col-6">
                             <div class="customer-item">
                                 <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
                                 <div class="customer-info">
-                                    <h6>Delvia Muliawaty</h6>
-                                    <small class="text-muted">16 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
+                                    <h6>{{ $p->nama_warga }}</h6>
+                                    <small class="text-muted">{{ $p->tgl_registrasi ? \Carbon\Carbon::parse($p->tgl_registrasi)->translatedFormat('d M Y') : '-' }}</small><br>
+                                    <small class="text-muted">{{ $p->nama_lokasi ?: '-' }}</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
-                            <div class="customer-item">
-                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
-                                <div class="customer-info">
-                                    <h6>Dolly Darussalam</h6>
-                                    <small class="text-muted">17 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
-                                </div>
-                            </div>
+                        @empty
+                        <div class="col-12">
+                            <p class="text-muted mb-0">Tidak ada pelanggan baru bulan ini.</p>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
-                            <div class="customer-item">
-                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
-                                <div class="customer-info">
-                                    <h6>Satya Midhi Tanto</h6>
-                                    <small class="text-muted">18 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
-                            <div class="customer-item">
-                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
-                                <div class="customer-info">
-                                    <h6>Andi Agus Santul</h6>
-                                    <small class="text-muted">24 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
-                            <div class="customer-item">
-                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
-                                <div class="customer-info">
-                                    <h6>ATIMIT</h6>
-                                    <small class="text-muted">06 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-6">
-                            <div class="customer-item">
-                                <div class="avatar-circle"><i class="bx bx-user-plus"></i></div>
-                                <div class="customer-info">
-                                    <h6>Indoegold</h6>
-                                    <small class="text-muted">14 Feb 2026</small><br>
-                                    <small class="text-muted">e-billing art 4</small>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                     <div class="text-center mt-3">
                         <a href="#" class="text-primary fw-semibold">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
@@ -325,11 +306,11 @@
                         <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                             <div class="card-title">
                                 <h5 class="text-nowrap mb-2">Laporan Bulan Ini</h5>
-                                <span class="badge bg-label-warning rounded-pill">Februari 2026</span>
+                                <span class="badge bg-label-warning rounded-pill">{{ $bulaninii }}</span>
                             </div>
                             <div class="mt-sm-auto">
                                 <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
-                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 84jt"></i></span></h3>
+                                <h3 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran) }}"></i></span></h3>
                             </div>
                         </div>
                         <div id="profileReportChart"></div>
@@ -394,7 +375,7 @@
                 <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
                         <h5 class="m-0 me-2">Statistik Tagihan</h5>
-                        <small class="text-muted">1,250 Total Tagihan</small>
+                        <small class="text-muted">{{ number_format($warga) }} Total Pelanggan</small>
                     </div>
                     <div class="dropdown">
                         <button class="btn p-0" type="button" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -406,7 +387,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex flex-column align-items-center gap-1">
-                            <h2 class="mb-2">856</h2>
+                            <h2 class="mb-2">{{ number_format($sudahbayar) }}</h2>
                             <span>Tagihan Lunas</span>
                         </div>
                         <div id="orderStatisticsChart"></div>
@@ -421,7 +402,7 @@
                                     <h6 class="mb-0">Tagihan Lunas</h6>
                                     <small class="text-muted">Pembayaran selesai</small>
                                 </div>
-                                <div class="user-progress"><small class="fw-semibold">856</small></div>
+                                <div class="user-progress"><small class="fw-semibold">{{ number_format($sudahbayar) }}</small></div>
                             </div>
                         </li>
                         <li class="d-flex mb-4 pb-1">
@@ -433,7 +414,7 @@
                                     <h6 class="mb-0">Belum Dibayar</h6>
                                     <small class="text-muted">Menunggu pembayaran</small>
                                 </div>
-                                <div class="user-progress"><small class="fw-semibold">312</small></div>
+                                <div class="user-progress"><small class="fw-semibold">{{ number_format($belumbayar) }}</small></div>
                             </div>
                         </li>
                         <li class="d-flex">
@@ -445,7 +426,7 @@
                                     <h6 class="mb-0">Jatuh Tempo</h6>
                                     <small class="text-muted">Melewati batas waktu</small>
                                 </div>
-                                <div class="user-progress"><small class="fw-semibold">82</small></div>
+                                <div class="user-progress"><small class="fw-semibold">0</small></div>
                             </div>
                         </li>
                     </ul>
@@ -482,22 +463,22 @@
                                 </div>
                                 <div>
                                     <small class="text-muted d-block">Total Pemasukan Bulan Ini</small>
-                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 85jt"></i></span></h4>
+                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran) }}"></i></span></h4>
                                 </div>
                             </div>
                             <div id="pemasukanChart"></div>
                             <div class="row mt-3 g-3">
                                 <div class="col-4 text-center">
                                     <small class="text-muted d-block">Hari Ini</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 4.2jt"></i></span></h6>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran_hariini) }}"></i></span></h6>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <small class="text-muted d-block">Minggu Ini</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 21jt"></i></span></h6>
+                                    <small class="text-muted d-block">Trx Hari Ini</small>
+                                    <h6 class="mb-0">{{ number_format($totaltrxhariini) }}</h6>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <small class="text-muted d-block">Bulan Lalu</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 78jt"></i></span></h6>
+                                    <small class="text-muted d-block">Bulan Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran) }}"></i></span></h6>
                                 </div>
                             </div>
                         </div>
@@ -510,22 +491,22 @@
                                 </div>
                                 <div>
                                     <small class="text-muted d-block">Total Pengeluaran Bulan Ini</small>
-                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 12jt"></i></span></h4>
+                                    <h4 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_pengeluaran) }}"></i></span></h4>
                                 </div>
                             </div>
                             <div id="pengeluaranChart"></div>
                             <div class="row mt-3 g-3">
                                 <div class="col-4 text-center">
-                                    <small class="text-muted d-block">Hari Ini</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 850rb"></i></span></h6>
+                                    <small class="text-muted d-block">Bulan Ini</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_pengeluaran) }}"></i></span></h6>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <small class="text-muted d-block">Minggu Ini</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 3.2jt"></i></span></h6>
+                                    <small class="text-muted d-block">Balance</small>
+                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($balance) }}"></i></span></h6>
                                 </div>
                                 <div class="col-4 text-center">
-                                    <small class="text-muted d-block">Bulan Lalu</small>
-                                    <h6 class="mb-0"><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="Rp 9.5jt"></i></span></h6>
+                                    <small class="text-muted d-block">-</small>
+                                    <h6 class="mb-0">-</h6>
                                 </div>
                             </div>
                         </div>
@@ -550,48 +531,28 @@
                 </div>
                 <div class="card-body">
                     <ul class="p-0 m-0">
+                        @forelse($transaksiTerakhir as $trx)
                         <li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
+                                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-wallet"></i></span>
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Transfer Bank</small>
-                                    <h6 class="mb-0">PT. Maju Jaya</h6>
+                                    <small class="text-muted d-block mb-1">{{ $trx->jns_tipe_pembayaran ?? 'Pembayaran' }}</small>
+                                    <h6 class="mb-0">{{ $trx->nama_warga }}</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-success"><span class="money-wrap"><span class="money-text">+Rp ***</span><i class="bx bx-hide money-toggle" data-real="+Rp 8.2jt"></i></span></h6>
+                                    <h6 class="mb-0 text-success"><span class="money-wrap"><span class="money-text">+Rp ***</span><i class="bx bx-hide money-toggle" data-real="+{{ format_idr($trx->jumlah_bayar) }}"></i></span></h6>
                                 </div>
                             </div>
                         </li>
+                        @empty
                         <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">E-Wallet</small>
-                                    <h6 class="mb-0">CV. Berkah Abadi</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-success"><span class="money-wrap"><span class="money-text">+Rp ***</span><i class="bx bx-hide money-toggle" data-real="+Rp 5.5jt"></i></span></h6>
-                                </div>
+                            <div class="col-12">
+                                <p class="text-muted mb-0">Belum ada transaksi.</p>
                             </div>
                         </li>
-                        <li class="d-flex">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('template/assets/img/icons/unicons/cc-warning.png') }}" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Refund</small>
-                                    <h6 class="mb-0">Toko Sejahtera</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0 text-danger"><span class="money-wrap"><span class="money-text">-Rp ***</span><i class="bx bx-hide money-toggle" data-real="-Rp 1.2jt"></i></span></h6>
-                                </div>
-                            </div>
-                        </li>
+                        @endforelse
                     </ul>
                 </div>
             </div>

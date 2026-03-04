@@ -1,0 +1,27 @@
+---
+alwaysApply: true
+---
+
+# Migrasi dari PHP Native ke Laravel
+
+Project ini merupakan **migrasi** dari aplikasi lama berbasis **PHP native** ke **Laravel**.
+
+## Konteks untuk Model
+
+- Kode yang ditulis harus mengikuti **Laravel** dan konvensi project ini.
+- User mungkin menyertakan **contoh kode PHP native lama** di dalam chat sebagai referensi.
+- Kode lama tersebut hanya untuk **pemahaman logika bisnis** dan **pemetaan fitur** — jangan copy-paste langsung.
+
+## Prinsip Migrasi
+
+- **Terjemahkan**, jangan transplantasi: ubah procedural PHP ke pola Laravel (Eloquent, Form Request, Service, dll).
+- Gunakan fitur Laravel yang sesuai: routing, validation, ORM, Blade, middleware.
+- Sesuaikan struktur database jika perlu (migrations, relationships).
+- Prioritaskan keamanan dan maintainability ala Laravel.
+
+## Saat User Menyertakan Kode Lama
+
+- Analisis logika bisnis dan alur data dari kode lama.
+- Identifikasi entitas, validasi, dan aturan domain yang harus dipertahankan.
+- Implementasikan ulang dengan stack Laravel yang benar.
+- Jika ada inkonsistensi antara kode lama dan domain rule (`ebilling-domain.mdc`), ikuti domain rule.
