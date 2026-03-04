@@ -73,18 +73,16 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <span class="text-muted small me-3" id="pageLoadTime" title="Page Load Time">
+                            <i class="bx bx-loader-alt me-1"></i>
+                            <span id="pageLoadTimeValue">--</span>
+                        </span>
                         <div class="flex-grow-1 overflow-hidden me-3">
                             <marquee behavior="scroll" direction="left" scrollamount="3" class="text-muted small fw-semibold" style="line-height: 2;">
                                 Selamat datang di Sistem Informasi e-Billing PT Altech Sistem Indonesia
                             </marquee>
                         </div>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <li class="nav-item me-3">
-                                <span class="text-muted small" id="pageLoadTime" title="Page Load Time">
-                                    <i class="bx bx-loader-alt me-1"></i>
-                                    <span id="pageLoadTimeValue">--</span>
-                                </span>
-                            </li>
                             <li class="nav-item me-2">
                                 <button type="button" class="theme-switcher" id="themeSwitcher" title="Ganti Tema">
                                     <i class="bx bx-moon"></i>
@@ -213,7 +211,8 @@
             } else if (performance.timing && performance.timing.loadEventEnd > 0) {
                 loadTimeMs = performance.timing.loadEventEnd - performance.timing.navigationStart;
             }
-            el.textContent = loadTimeMs < 1000 ? loadTimeMs + ' ms' : (loadTimeMs / 1000).toFixed(2) + ' s';
+            const loadTimeSec = loadTimeMs / 1000;
+            el.textContent = loadTimeSec.toFixed(3) + ' detik';
         });
     </script>
 
