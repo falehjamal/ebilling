@@ -24,9 +24,9 @@
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-tachometer"></i>
+        <li class="menu-item{{ request()->routeIs('dashboard-cabang') ? ' active' : '' }}">
+            <a href="{{ route('dashboard-cabang') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-git-branch"></i>
                 <div>Dashboard Cabang</div>
             </a>
         </li>

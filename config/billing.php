@@ -21,4 +21,6 @@ return [
     ],
 
     'default_redirect' => '/dashboard',
+
+    'legacy_base_url' => env('BILLING_LEGACY_BASE_URL', 'https://e.ebilling.id'),
 ];
