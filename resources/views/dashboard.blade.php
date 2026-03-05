@@ -76,6 +76,8 @@
         }
 
         .money-wrap { display: inline-flex; align-items: center; gap: 4px; }
+        .money-group-card-keuangan .money-toggle-group-card { margin-left: 6px; font-size: 1rem; vertical-align: middle; cursor: pointer; opacity: .8; color: rgba(255,255,255,.85); }
+        .money-group-card-keuangan .money-toggle-group-card:hover { opacity: 1; color: #fff; }
         .money-wrap .money-toggle {
             cursor: pointer; opacity: .6; transition: opacity .15s;
             font-size: .75em; vertical-align: middle; border: none;
@@ -208,14 +210,16 @@
             <div class="card summary-card bg-card-blue">
                 <div class="card-body">
                     <i class="bx bx-wallet card-icon"></i>
-                    <dl class="status-list mb-0">
-                        <dt>Pemasukan Bulan Ini | Hari Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran) }}"></i></span> | <span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_iuran_hariini) }}"></i></span> <span class="badge bg-info">({{ number_format($totaltrxhariini) }} trx)</span></dd>
-                        <dt>Pengeluaran Bulan Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($total_pengeluaran) }}"></i></span></dd>
-                        <dt>Balance Bulan Ini</dt>
-                        <dd><span class="money-wrap"><span class="money-text">Rp ***</span><i class="bx bx-hide money-toggle" data-real="{{ format_idr($balance) }}"></i></span></dd>
-                    </dl>
+                    <div class="money-group-card-keuangan">
+                        <dl class="status-list mb-0">
+                            <dt>Pemasukan Bulan Ini | Hari Ini <i class="bx bx-hide money-toggle money-toggle-group-card" title="Tampilkan/sembunyikan nilai"></i></dt>
+                            <dd><span class="money-wrap" data-real="{{ format_idr($total_iuran) }}"><span class="money-text">Rp ***</span></span> | <span class="money-wrap" data-real="{{ format_idr($total_iuran_hariini) }}"><span class="money-text">Rp ***</span></span> <span class="badge bg-info">({{ number_format($totaltrxhariini) }} trx)</span></dd>
+                            <dt>Pengeluaran Bulan Ini</dt>
+                            <dd><span class="money-wrap" data-real="{{ format_idr($total_pengeluaran) }}"><span class="money-text">Rp ***</span></span></dd>
+                            <dt>Balance Bulan Ini</dt>
+                            <dd><span class="money-wrap" data-real="{{ format_idr($balance) }}"><span class="money-text">Rp ***</span></span></dd>
+                        </dl>
+                    </div>
                 </div>
                 <a href="#" class="card-footer-link">Selengkapnya <i class="bx bx-right-arrow-alt"></i></a>
             </div>
@@ -565,6 +569,28 @@
 (function () {
     document.querySelectorAll('.money-toggle').forEach(function (icon) {
         icon.addEventListener('click', function () {
+            if (this.classList.contains('money-toggle-group-card')) {
+                var group = this.closest('.money-group-card-keuangan');
+                if (!group) return;
+                var wraps = group.querySelectorAll('.money-wrap');
+                var anyVisible = false;
+                wraps.forEach(function (wrap) {
+                    var text = wrap.querySelector('.money-text');
+                    if (!text) return;
+                    if (!text.dataset.hidden) text.dataset.hidden = text.textContent;
+                    if (text.textContent.indexOf('***') === -1) anyVisible = true;
+                });
+                wraps.forEach(function (wrap) {
+                    var text = wrap.querySelector('.money-text');
+                    if (!text) return;
+                    var real = wrap.dataset.real || '';
+                    var hidden = text.dataset.hidden || 'Rp ***';
+                    text.textContent = anyVisible ? hidden : real;
+                });
+                this.classList.toggle('bx-hide', anyVisible);
+                this.classList.toggle('bx-show', !anyVisible);
+                return;
+            }
             var wrap = this.closest('.money-wrap');
             var text = wrap.querySelector('.money-text');
             var real = this.dataset.real;
