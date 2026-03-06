@@ -65,7 +65,7 @@
                     @endphp
                     <tr>
                         <td>
-                            <a href="{{ $legacyBaseUrl }}/?page=data-warga-sto&id_lokasi={{ $edit }}" target="_blank" title="Lihat Data Pelanggan" class="btn btn-success btn-sm">
+                            <a href="{{ route('data-warga-sto', ['id_lokasi' => $edit]) }}" title="Lihat Data Pelanggan" class="btn btn-success btn-sm">
                                 <i class="bx bx-show"></i>
                             </a>
                             <a href="{{ $legacyBaseUrl }}/?page=data-pemasukan-sto-bulan-ini-1234&id_lokasi={{ $c->id_lokasi }}&tglskg={{ $tglskg }}" target="_blank" title="Lihat Pemasukan" class="btn btn-success btn-sm">
@@ -109,7 +109,7 @@
                         <td>{{ $c->insentif_label }}</td>
                         <td>{{ format_idr($c->total_estimasi) }}</td>
                         <td>
-                            <a href="{{ $legacyBaseUrl }}/?page=data-warga-sto&id_lokasi={{ $edit }}" target="_blank" title="Lihat Data Pelanggan" class="btn btn-success btn-sm">
+                            <a href="{{ route('data-warga-sto', ['id_lokasi' => $edit]) }}" title="Lihat Data Pelanggan" class="btn btn-success btn-sm">
                                 <i class="bx bx-show"></i>
                             </a>
                         </td>
