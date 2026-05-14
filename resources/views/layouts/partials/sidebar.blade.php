@@ -110,7 +110,9 @@
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Custom Domain</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Upload Data Pelanggan</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Aplikasi Map</div></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><div>Data Lokasi</div></a></li>
+                <li class="menu-item{{ request()->routeIs('data-lokasi.*') ? ' active' : '' }}">
+                    <a href="{{ route('data-lokasi.index') }}" class="menu-link"><div>Data Lokasi</div></a>
+                </li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Perusahaan</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Tipe Pembayaran</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Notifikasi</div></a></li>

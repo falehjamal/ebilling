@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardCabangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataLokasiController;
 use App\Http\Controllers\DataWargaStoController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,8 @@ Route::middleware('billing.auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::get('/dashboard-cabang', DashboardCabangController::class)->name('dashboard-cabang');
     Route::get('/data-warga-sto', DataWargaStoController::class)->name('data-warga-sto');
+
+    Route::resource('data-lokasi', DataLokasiController::class)
+        ->except(['show'])
+        ->parameters(['data-lokasi' => 'id']);
 });
