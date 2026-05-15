@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardCabangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLokasiController;
+use App\Http\Controllers\DataTipePembayaranController;
 use App\Http\Controllers\DataWargaStoController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,8 @@ Route::middleware('billing.auth')->group(function () {
     Route::resource('data-lokasi', DataLokasiController::class)
         ->except(['show'])
         ->parameters(['data-lokasi' => 'id']);
+
+    Route::resource('data-tipe-pembayaran', DataTipePembayaranController::class)
+        ->except(['show'])
+        ->parameters(['data-tipe-pembayaran' => 'id']);
 });
