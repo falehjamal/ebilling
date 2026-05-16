@@ -94,7 +94,9 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Pelanggan</div></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><div>Data Diskon</div></a></li>
+                <li class="menu-item{{ request()->routeIs('data-diskon.*') ? ' active' : '' }}">
+                    <a href="{{ route('data-diskon.index') }}" class="menu-link"><div>Data Diskon</div></a>
+                </li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Deposit Pelanggan</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Pelanggan Corporate</div></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><div>Data Kartu Member</div></a></li>
